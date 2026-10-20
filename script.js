@@ -1,74 +1,71 @@
-const loading = document.getElementById("loading");
-const opening = document.getElementById("opening");
-const site = document.getElementById("site");
-const enterButton = document.getElementById("enterButton");
 
-const music = document.getElementById("music");
-const musicControl = document.getElementById("musicControl");
-const musicIcon = document.getElementById("musicIcon");
-
-document.body.classList.add("locked");
-
-window.addEventListener("load", () => {
-    setTimeout(() => {
-        loading.classList.add("hide");
-    }, 500);
-});
-
-enterButton.addEventListener("click", () => {
-    opening.classList.add("opened");
-    site.classList.add("visible");
-    document.body.classList.remove("locked");
-
-    music.play()
-        .then(() => {
-            musicControl.classList.add("playing");
-            musicIcon.textContent = "Ⅱ";
-        })
-        .catch(() => {
-            // O navegador pode bloquear o áudio.
-        });
-});
-
-musicControl.addEventListener("click", () => {
-    if (music.paused) {
-        music.play()
-            .then(() => {
-                musicControl.classList.add("playing");
-                musicIcon.textContent = "Ⅱ";
-            })
-            .catch(() => {});
-    } else {
-        music.pause();
-        musicControl.classList.remove("playing");
-        musicIcon.textContent = "♫";
-    }
-});
-
-// Contagem regressiva
-const weddingDate = new Date("October 18, 2026 17:00:00").getTime();
-
-function updateCountdown() {
-    const now = new Date().getTime();
-    const distance = weddingDate - now;
-
-    if (distance <= 0) {
-        ["days", "hours", "minutes", "seconds"].forEach(id => {
-            document.getElementById(id).textContent = "00";
-        });
-        return;
-    }
-
-    const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-    const hours = Math.floor((distance / (1000 * 60 * 60)) % 24);
-    const minutes = Math.floor((distance / (1000 * 60)) % 60);
-    const seconds = Math.floor((distance / 1000) % 60);
-
-    document.getElementById("days").textContent = String(days).padStart(2, "0");
-    document.getElementById("hours").textContent = String(hours).padStart(2, "0");
-    document.getElementById("minutes").textContent = String(minutes).padStart(2, "0");
-    document.getElementById("seconds").textContent = String(seconds).padStart(2, "0");
+const etiquetaSelo = document.getElementById('etiquetaSelo');
+const botaoAbrir = document.getElementById('abrir');
+const abertura = document.getElementById('abertura');
+const convite = document.getElementById('convite');
+let aberturaEmAndamento = false;
+const musicaConvite = document.getElementById('musicaConvite');
+const controleMusica = document.getElementById('controleMusica');
+if (musicaConvite) musicaConvite.volume = 0.28;
+function iniciarMusica() {
+  if (!musicaConvite) return;
+  const tentativa = musicaConvite.play();
+  if (tentativa && typeof tentativa.catch === 'function') tentativa.catch(() => {});
+  if (controleMusica) {
+    controleMusica.classList.remove('escondido');
+    controleMusica.setAttribute('aria-pressed', 'true');
+    controleMusica.setAttribute('aria-label', 'Pausar música');
+    controleMusica.innerHTML = '♫ <span>Música ligada</span>';
+  }
 }
-
-updateCountdown();
-setInterval(updateCountdown, 1000);
+if (controleMusica) controleMusica.addEventListener('click', () => {
+  if (!musicaConvite) return;
+  if (musicaConvite.paused) {
+    iniciarMusica();
+  } else {
+    musicaConvite.pause();
+    controleMusica.setAttribute('aria-pressed', 'false');
+    controleMusica.setAttribute('aria-label', 'Tocar música');
+    controleMusica.innerHTML = '♫ <span>Música pausada</span>';
+  }
+});
+function abrirConvite() {
+  if (aberturaEmAndamento || !abertura || !convite) return;
+  aberturaEmAndamento = true;
+  iniciarMusica();
+  abertura.classList.add('abrindo');
+  abertura.setAttribute('aria-busy','true');
+  if (botaoAbrir) botaoAbrir.disabled = true;
+  if (etiquetaSelo) etiquetaSelo.disabled = true;
+  window.setTimeout(() => {
+    abertura.classList.add('escondido');
+    abertura.style.display = 'none';
+    abertura.classList.remove('abrindo');
+    abertura.removeAttribute('aria-busy');
+    convite.classList.remove('escondido');
+    convite.setAttribute('aria-hidden','false');
+    window.scrollTo({top:0,behavior:'smooth'});
+    aberturaEmAndamento = false;
+  }, 950);
+}
+if (botaoAbrir) botaoAbrir.addEventListener('click', abrirConvite);
+if (etiquetaSelo) etiquetaSelo.addEventListener('click', abrirConvite);
+const botaoVoltar = document.getElementById('voltar');
+if (botaoVoltar) botaoVoltar.addEventListener('click',()=>{
+  if (musicaConvite) musicaConvite.pause();
+  if (controleMusica) controleMusica.classList.add('escondido');
+  convite.classList.add('escondido'); convite.setAttribute('aria-hidden','true');
+  abertura.classList.remove('escondido','abrindo'); abertura.style.display = ''; abertura.removeAttribute('aria-busy');
+  if (botaoAbrir) botaoAbrir.disabled = false;
+  if (etiquetaSelo) etiquetaSelo.disabled = false;
+  window.scrollTo({top:0,behavior:'smooth'});
+});
+const dataCasamento=new Date('2027-01-23T16:40:00-03:00');
+function atualizarContagem(){
+  let s=Math.max(0,Math.floor((dataCasamento.getTime()-Date.now())/1000));
+  document.getElementById('dias').textContent=Math.floor(s/86400);
+  document.getElementById('horas').textContent=String(Math.floor(s%86400/3600)).padStart(2,'0');
+  document.getElementById('minutos').textContent=String(Math.floor(s%3600/60)).padStart(2,'0');
+  document.getElementById('segundos').textContent=String(s%60).padStart(2,'0');
+}
+atualizarContagem();setInterval(atualizarContagem,1000);

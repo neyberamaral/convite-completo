@@ -1,254 +1,176 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="pt-BR">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="theme-color" content="#eee7df">
-    <title>Ana & Gabriel | Nosso Casamento</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
-
-    <div class="loading" id="loading">
-        <div class="loader-ring"></div>
-        <span>Preparando nosso convite...</span>
-    </div>
-
-    <div class="music-control" id="musicControl" title="Ativar música">
-        <span id="musicIcon">♫</span>
-    </div>
-
-    <audio id="music" loop>
-        <!-- Coloque seu arquivo de música aqui -->
-        <source src="musica.mp3" type="audio/mpeg">
-    </audio>
-
-    <section class="opening" id="opening">
-        <div class="opening-content">
-            <span class="eyebrow">UM DIA PARA GUARDAR NO CORAÇÃO</span>
-            <div class="monogram">A <i>&</i> G</div>
-            <h1>Ana & Gabriel</h1>
-            <p>Convidam você para celebrar o início de uma nova história.</p>
-            <button id="enterButton">Abrir convite</button>
-        </div>
-    </section>
-
-    <div class="site" id="site">
-
-        <header class="hero">
-            <div class="hero-image"></div>
-            <div class="hero-overlay"></div>
-
-            <div class="hero-content">
-                <span class="eyebrow">NOSSO GRANDE DIA</span>
-                <h1>Ana <i>&</i> Gabriel</h1>
-                <p>18 de Outubro de 2026</p>
-            </div>
-
-            <div class="hero-bottom">
-                <span>Deslize para descobrir</span>
-                <span class="arrow">↓</span>
-            </div>
-        </header>
-
-        <main>
-
-            <section class="section story">
-                <div class="section-heading">
-                    <span class="eyebrow">COMO TUDO COMEÇOU</span>
-                    <h2>Uma história escrita a dois</h2>
-                </div>
-
-                <div class="story-grid">
-                    <div class="story-photo photo-placeholder">
-                        <span>Ana & Gabriel</span>
-                    </div>
-
-                    <div class="story-text">
-                        <p>
-                            Existem encontros que parecem acaso, mas que o coração
-                            reconhece como destino.
-                        </p>
-
-                        <p>
-                            Entre conversas, risadas, sonhos e pequenos momentos,
-                            descobrimos que queríamos caminhar juntos pela vida.
-                        </p>
-
-                        <p>
-                            Hoje, damos mais um passo nessa história e queremos
-                            dividir esse momento especial com as pessoas que fazem
-                            parte dela.
-                        </p>
-
-                        <span class="signature">Com amor, Ana & Gabriel</span>
-                    </div>
-                </div>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#263329">
+        <title>I & L — Nosso casamento</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Great+Vibes&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="estilo.css">
+    </head>
+    <body>
+        <section class="abertura abertura-foto-tela" id="abertura" aria-label="Envelope fechado do convite de casamento">
+            <img class="imagem-envelope-tela" src="imagens/envelope-novo.png" alt="Envelope de casamento Jarla e Lucas com lacre dourado">
+            <div class="sombra-envelope-tela" aria-hidden="true"></div>
+            <button
+                id="abrir"
+                class="zona-lacre-tela"
+                type="button"
+                aria-label="Clique no lacre dourado para abrir o convite"
+            ></button>
+            <button
+                class="zona-etiqueta-tela"
+                id="etiquetaSelo"
+                type="button"
+                aria-label="Clique no selo para abrir o convite"
+            ></button>
+            <span class="aviso-toque-tela" aria-hidden="true">TOQUE NO LACRE PARA ABRIR</span>
+        </section>
+        <main class="convite escondido" id="convite" aria-hidden="true">
+            <header class="cabecalho">
+                <span class="folha folha-a">❧</span>
+                <span class="folha folha-b">❧</span>
+                <p class="rotulo">COM A BÊNÇÃO DE DEUS</p>
+                <h1>O início da nossa
+                    <br>
+                    <em>história</em>
+                </h1>
+                <p class="versiculo">“Acima de tudo, porém, revistam-se do amor,
+                    <br>que é o elo perfeito.”
+                </p>
+                <small>COLOSSENSES 3:14</small>
+            </header>
+            <section class="foto-capa">
+                <img src="imagens/casal-01.jpeg" alt="Fotografia do casal">
+                <div class="sombra-foto"></div>
             </section>
-
-            <section class="section timeline-section">
-                <div class="section-heading">
-                    <span class="eyebrow">NOSSA CAMINHADA</span>
-                    <h2>Alguns capítulos importantes</h2>
+            <section class="nomes">
+                <p>Com alegria, queremos compartilhar este dia com você</p>
+                <h2>I
+                    <span>&</span> L
+                </h2>
+                <div class="linha">
+                    <i>✦</i>
                 </div>
-
-                <div class="timeline">
-                    <div class="timeline-item">
-                        <span>2019</span>
-                        <div>
-                            <h3>O primeiro encontro</h3>
-                            <p>Onde uma simples conversa começou a mudar tudo.</p>
-                        </div>
-                    </div>
-
-                    <div class="timeline-item">
-                        <span>2021</span>
-                        <div>
-                            <h3>Um novo capítulo</h3>
-                            <p>Sonhos começaram a ser planejados lado a lado.</p>
-                        </div>
-                    </div>
-
-                    <div class="timeline-item">
-                        <span>2025</span>
-                        <div>
-                            <h3>O pedido</h3>
-                            <p>Uma pergunta, uma resposta e uma promessa para a vida.</p>
-                        </div>
-                    </div>
-
-                    <div class="timeline-item">
-                        <span>2026</span>
-                        <div>
-                            <h3>O grande dia</h3>
-                            <p>O começo de uma nova fase da nossa história.</p>
-                        </div>
-                    </div>
-                </div>
+                <p class="mensagem">Diante das bênçãos de Deus, teremos a alegria de unir nossas vidas e convidar você para este momento.</p>
             </section>
-
-            <section class="countdown-section">
-                <div class="section">
-                    <span class="eyebrow">CONTE OS DIAS COM A GENTE</span>
-                    <h2>Até o nosso casamento</h2>
-
-                    <div class="countdown">
-                        <div><strong id="days">00</strong><span>Dias</span></div>
-                        <div><strong id="hours">00</strong><span>Horas</span></div>
-                        <div><strong id="minutes">00</strong><span>Minutos</span></div>
-                        <div><strong id="seconds">00</strong><span>Segundos</span></div>
-                    </div>
-                </div>
+            <section class="foto-memoria memoria-02" aria-label="Mais uma lembrança do casal">
+                <img src="imagens/casal-02.jpeg" alt="Uma lembrança especial do casal" loading="lazy">
+                <p>Dois caminhos, uma só história.</p>
             </section>
-
-            <section class="section event">
-                <div class="section-heading">
-                    <span class="eyebrow">ANOTE NA AGENDA</span>
-                    <h2>O nosso grande dia</h2>
-                </div>
-
-                <div class="event-grid">
-                    <article>
-                        <span class="event-icon">♡</span>
-                        <span class="eyebrow">CERIMÔNIA</span>
-                        <h3>18 de Outubro</h3>
-                        <p>17:00</p>
-                    </article>
-
-                    <article>
-                        <span class="event-icon">⌖</span>
-                        <span class="eyebrow">RECEPÇÃO</span>
-                        <h3>Espaço Jardim das Flores</h3>
-                        <p>Goiânia — GO</p>
-                    </article>
-
-                    <article>
-                        <span class="event-icon">♧</span>
-                        <span class="eyebrow">TRAJE</span>
-                        <h3>Esporte Fino</h3>
-                        <p>Venha celebrar com elegância.</p>
-                    </article>
-                </div>
-
-                <a class="button outline" href="https://www.google.com/maps" target="_blank">
-                    Como chegar
+            <section class="data">
+                <p class="rotulo">VAMOS CELEBRAR O AMOR</p>
+                <strong>23</strong>
+                <h3>JANEIRO
+                    <i>•</i> 2027
+                </h3>
+                <p>SÁBADO · ÀS 16H40</p>
+            </section>
+            <section class="foto-memoria memoria-03" aria-label="Uma lembrança do casal antes do grande dia">
+                <img src="imagens/casal-03.jpeg" alt="O casal compartilhando um momento feliz" loading="lazy">
+                <p>Que a vida nos reserve muitos capítulos assim.</p>
+            </section>
+            <section class="igreja">
+                <img src="imagens/igreja-pintura.png" alt="Igreja Matriz em pintura de aquarela com pinceladas incompletas">
+                <p class="rotulo">A CERIMÔNIA</p>
+                <h2>Igreja Matriz</h2>
+                <p>O primeiro capítulo de uma vida inteira juntos.</p>
+                <a
+                    class="botao"
+                    href="https://maps.app.goo.gl/zhHjWtMNak4a1wq88"
+                    target="_blank"
+                    rel="noopener"
+                >⌖ &nbsp; LOCALIZAÇÃO DA IGREJA MATRIZ
+                    <span>↗</span>
                 </a>
             </section>
-
-            <section class="gallery-section">
-                <div class="section gallery-intro">
-                    <span class="eyebrow">MOMENTOS</span>
-                    <h2>Algumas lembranças</h2>
-                    <p>Substitua os espaços abaixo pelas fotos do casal.</p>
+            <section class="foto-memoria memoria-04" aria-label="Retrato especial da noiva">
+                <img src="imagens/casal-04.jpeg" alt="Retrato da noiva com seu buquê" loading="lazy">
+                <p>Um dia para guardar no coração.</p>
+            </section>
+            <section class="recepcao">
+                <div class="arte">❧
+                    <span>celebrar</span> ❧
                 </div>
-
-                <div class="gallery">
-                    <div class="gallery-photo large">Foto 01</div>
-                    <div class="gallery-photo">Foto 02</div>
-                    <div class="gallery-photo">Foto 03</div>
-                    <div class="gallery-photo large">Foto 04</div>
-                    <div class="gallery-photo">Foto 05</div>
-                    <div class="gallery-photo">Foto 06</div>
+                <p class="rotulo">DEPOIS DA CERIMÔNIA</p>
+                <h2>Mix Clube</h2>
+                <p>Vamos brindar, sorrir e criar lembranças para sempre.</p>
+                <a
+                    class="botao"
+                    href="https://share.google/xN7SCmno8SfQMqcSk"
+                    target="_blank"
+                    rel="noopener"
+                >⌖ &nbsp; LOCALIZAÇÃO DA RECEPÇÃO
+                    <span>↗</span>
+                </a>
+            </section>
+            <section class="contagem">
+                <p class="rotulo">A CONTAGEM REGRESSIVA JÁ COMEÇOU</p>
+                <h2>Falta pouco para o nosso sim</h2>
+                <div class="relogio">
+                    <div>
+                        <b id="dias">---</b>
+                        <small>DIAS</small>
+                    </div>
+                    <i>:</i>
+                    <div>
+                        <b id="horas">--</b>
+                        <small>HORAS</small>
+                    </div>
+                    <i>:</i>
+                    <div>
+                        <b id="minutos">--</b>
+                        <small>MINUTOS</small>
+                    </div>
+                    <i>:</i>
+                    <div>
+                        <b id="segundos">--</b>
+                        <small>SEGUNDOS</small>
+                    </div>
                 </div>
             </section>
-
-            <section class="section gifts">
-                <div class="section-heading">
-                    <span class="eyebrow">COM CARINHO</span>
-                    <h2>Lista de presentes</h2>
-                    <p>
-                        Sua presença já é o nosso maior presente.
-                        Mas, se desejar nos presentear, deixamos algumas opções.
-                    </p>
-                </div>
-
-                <div class="gift-grid">
-                    <a href="#" class="gift-card">
-                        <span>♡</span>
-                        <strong>Lista de presentes</strong>
-                        <small>Ver opções</small>
-                    </a>
-
-                    <a href="#" class="gift-card">
-                        <span>◇</span>
-                        <strong>Lua de mel</strong>
-                        <small>Contribuir</small>
-                    </a>
-                </div>
+            <section class="foto-memoria memoria-05" aria-label="Uma última lembrança do casal">
+                <img src="imagens/casal-05.jpeg" alt="O casal de mãos dadas" loading="lazy">
+                <p>E queremos você perto para celebrar o nosso sim.</p>
             </section>
-
-            <section class="section confirmation" id="confirmar">
-                <div class="confirmation-box">
-                    <span class="eyebrow">ESPERAMOS POR VOCÊ</span>
-                    <h2>Confirme sua presença</h2>
-                    <p>
-                        Para que possamos preparar tudo com carinho,
-                        confirme sua presença até 01 de Outubro.
-                    </p>
-
-                    <a class="button" href="https://wa.me/5500000000000?text=Olá!%20Quero%20confirmar%20minha%20presença%20no%20casamento%20da%20Ana%20e%20do%20Gabriel." target="_blank">
-                        Confirmar pelo WhatsApp
-                    </a>
-                </div>
+            <section class="confirmacao">
+                <p class="rotulo">SUA PRESENÇA É MUITO ESPECIAL</p>
+                <h2>Esperamos você!</h2>
+                <p>Confirme sua presença pelo WhatsApp.</p>
+                <a
+                    class="botao confirmar"
+                    href="https://wa.me/5564999628761?text=Ol%C3%A1%21%20Gostaria%20de%20confirmar%20minha%20presen%C3%A7a%20no%20casamento%20de%20I%20%26%20L%2C%20no%20dia%2023%20de%20janeiro%20de%202027."
+                    target="_blank"
+                    rel="noopener"
+                >♡ &nbsp; CONFIRMAR PRESENÇA PELO WHATSAPP</a>
             </section>
-
-            <section class="final-message">
-                <div>
-                    <span class="eyebrow">ATÉ LÁ...</span>
-                    <h2>Que venha o nosso para sempre.</h2>
-                    <p>Ana & Gabriel</p>
-                </div>
-            </section>
-
+            <footer>
+                <span>❧</span>
+                <p>Com amor, hoje e sempre</p>
+                <strong>I
+                    <i>&</i> L
+                </strong>
+                <small>23 · 01 · 2027</small>
+            </footer>
+            <button class="voltar" id="voltar">↶ Voltar à carta</button>
         </main>
-
-        <footer>
-            <p>Ana & Gabriel</p>
-            <span>18 • 10 • 2026</span>
-        </footer>
-
-    </div>
-
-    <script src="script.js"></script>
-</body>
+        <audio
+            id="musicaConvite"
+            src="imagens/musica-romantica.mp3"
+            preload="auto"
+            loop
+        ></audio>
+        <button
+            id="controleMusica"
+            class="controle-musica escondido"
+            type="button"
+            aria-label="Pausar música"
+            aria-pressed="true"
+        >♫
+            <span>Música ligada</span>
+        </button>
+        <script src="script.js"></script>
+    </body>
 </html>
